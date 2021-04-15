@@ -191,6 +191,15 @@ func (s *Service) createUserKubeconfigSecret(ctx context.Context, cluster *eks.C
 
 	execConfig := &api.ExecConfig{APIVersion: "client.authentication.k8s.io/v1alpha1"}
 	switch s.scope.TokenMethod() {
+	case ekscontrolplanev1.EKSTokenMethodUndistro:
+		execConfig.Command = "undistro"
+		execConfig.Args = []string{
+			"get",
+			"eks-token",
+			s.scope.Cluster.Name,
+			"-n",
+			s.scope.Cluster.Namespace,
+		}
 	case ekscontrolplanev1.EKSTokenMethodIAMAuthenticator:
 		execConfig.Command = "aws-iam-authenticator"
 		execConfig.Args = []string{

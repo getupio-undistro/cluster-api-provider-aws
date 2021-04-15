@@ -74,6 +74,9 @@ var (
 	// EKSTokenMethodIAMAuthenticator indicates that IAM autenticator will be used to get a token
 	EKSTokenMethodIAMAuthenticator = EKSTokenMethod("iam-authenticator")
 
+	// EKSTokenMethodUndistro indicates that UnDistro will be used to get a token
+	EKSTokenMethodUndistro = EKSTokenMethod("undistro")
+
 	// EKSTokenMethodAWSCli indicates that the AWS CLI will be used to get a token
 	// Version 1.16.156 or greater is required of the AWS CLI
 	EKSTokenMethodAWSCli = EKSTokenMethod("aws-cli")
